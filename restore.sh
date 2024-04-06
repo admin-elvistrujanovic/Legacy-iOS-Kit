@@ -171,7 +171,7 @@ elif [[ $ID == "opensuse-tumbleweed" ]]; then
     distro="opensuse"
 elif [[ $ID == "gentoo" || $ID_LIKE == "gentoo" || $ID == "pentoo" ]]; then
     distro="gentoo"
-elif [[ $ID == "Kali" || $ID_LIKE == "Kali" || $ID == "Kali GNU/Linux Rolling" ]]; then
+elif [[ $ID == "Kali" || $ID_LIKE == "Kali GNU/Linux Rolling" || $ID == "kali" ]]; then
     distro="debian"
 else
   error "Your distro ($platform_ver) is not detected/supported. See the repo README for supported OS versions/distros"
