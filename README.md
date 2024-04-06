@@ -111,6 +111,7 @@
 - [**Debian**](https://www.debian.org/) 12 Bookworm and newer, Sid, and Debian-based distros
 - [**openSUSE**](https://www.opensuse.org/) Tumbleweed
 - [**Gentoo**](https://www.gentoo.org/) and Gentoo-based distros
+- [**Kali**](https://kali.org/) - Support was added in April 2024!
 - **macOS** 10.13 and newer (10.15 and newer recommended)
 
 ## Tools and other stuff used
