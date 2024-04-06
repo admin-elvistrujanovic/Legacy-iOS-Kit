@@ -154,17 +154,17 @@ set_tool_paths() {
             fedora_ver=$VERSION_ID
         fi
 
-        # distro check
-if [[ $ID == "arch" || $ID_LIKE == "arch" || $ID == "artix" ]]; then
-  distro="arch"
-elif (( ubuntu_ver >= 22 )) || (( debian_ver >= 12 )) || [[ $debian_ver == "sid" ]] || [[ $ID == "Kali" ]]; then
-  distro="debian"  # Include Kali Linux here
+# distro check
+if [[ $ID == "arch" || $ID_LIKE == "arch" || $ID == "artix" || $ID == "kali" ]]; then
+    distro="arch"
+elif (( ubuntu_ver >= 22 )) || (( debian_ver >= 12 )) || [[ $debian_ver == "sid" ]]; then
+    distro="debian"
 elif (( fedora_ver >= 37 )); then
-  distro="fedora"
+    distro="fedora"
 elif [[ $ID == "opensuse-tumbleweed" ]]; then
-  distro="opensuse"
+    distro="opensuse"
 elif [[ $ID == "gentoo" || $ID_LIKE == "gentoo" || $ID == "pentoo" ]]; then
-  distro="gentoo"
+    distro="gentoo"
 else
   error "Your distro ($platform_ver) is not detected/supported. See the repo README for supported OS versions/distros"
 fi
