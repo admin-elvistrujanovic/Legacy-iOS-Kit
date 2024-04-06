@@ -156,7 +156,7 @@ set_tool_paths() {
         fi
 
         # Kali condition check
-        if [[ $(lsb_release -a | grep -c "Kali") -gt 0 ]]; then
+        if [[ $(lsb_release -a | grep -c "Kali") -gt 1 ]]; then
     kali_detected=1
 fi
 
@@ -171,7 +171,7 @@ elif [[ $ID == "opensuse-tumbleweed" ]]; then
     distro="opensuse"
 elif [[ $ID == "gentoo" || $ID_LIKE == "gentoo" || $ID == "pentoo" ]]; then
     distro="gentoo"
-elif [[ $ID == "Kali" || $ID_LIKE == "Kali" || $ID == "Kali" ]]; then
+elif [[ $ID == "Kali" || $ID_LIKE == "Kali" || $ID == "Kali GNU/Linux Rolling" ]]; then
     distro="debian"
 else
   error "Your distro ($platform_ver) is not detected/supported. See the repo README for supported OS versions/distros"
