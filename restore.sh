@@ -129,6 +129,7 @@ set_tool_paths() {
         fi
         dir+="$platform_arch"
 
+
         # version check
         if [[ -n $UBUNTU_CODENAME ]]; then
             case $UBUNTU_CODENAME in
@@ -154,8 +155,13 @@ set_tool_paths() {
             fedora_ver=$VERSION_ID
         fi
 
+        # Kali condition check
+        if [[ $(lsb_release -a | grep -c "Kali") -gt 0 ]]; then
+    kali_detected=1
+fi
+
 # distro check
-if [[ $ID == "arch" || $ID_LIKE == "arch" || $ID == "artix" || $ID == "kali" ]]; then
+if [[ $ID == "arch" || $ID_LIKE == "arch" || $ID == "artix" ]]; then
     distro="arch"
 elif (( ubuntu_ver >= 22 )) || (( debian_ver >= 12 )) || [[ $debian_ver == "sid" ]]; then
     distro="debian"
@@ -165,6 +171,8 @@ elif [[ $ID == "opensuse-tumbleweed" ]]; then
     distro="opensuse"
 elif [[ $ID == "gentoo" || $ID_LIKE == "gentoo" || $ID == "pentoo" ]]; then
     distro="gentoo"
+elif [[ $ID == "Kali" || $ID_LIKE == "Kali" || $ID == "Kali" ]]; then
+    distro="debian"
 else
   error "Your distro ($platform_ver) is not detected/supported. See the repo README for supported OS versions/distros"
 fi
@@ -390,7 +398,7 @@ install_depends() {
 
 version_update_check() {
     log "Checking for updates..."
-    github_api=$(curl https://api.github.com/repos/LukeZGD/Legacy-iOS-Kit/releases/latest 2>/dev/null)
+    github_api=$(curl https://api.github.com/repos/admin-elvistrujanovic/Legacy-iOS-Kit/releases/latest 2>/dev/null)
     pushd "$(dirname "$0")/tmp" >/dev/null
     version_latest=$(echo "$github_api" | $jq -r '.assets[] | select(.name|test("complete")) | .name' | cut -c 25- | cut -c -9)
     git_hash_latest=$(echo "$github_api" | $jq -r '.assets[] | select(.name|test("git-hash")) | .name' | cut -c 21- | cut -c -7)
